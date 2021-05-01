@@ -3,11 +3,12 @@ import { sendTask } from "../service/task";
 
 function Home() {
   let now = new Date().toISOString();
+  let oneHour = 3600000;
   console.log(now);
 
   const [state, setState] = useState({
     taskName: "",
-    dateStart: "2021-06-01T00:00",
+    dateStart: new Date().toISOString(),
     dateEnd: "2021-06-01T01:00",
   });
 
@@ -17,6 +18,9 @@ function Home() {
       ...prevState,
       [id]: value,
     }));
+    // if(id === dateStart){
+    //   setState(dateEnd + 1)
+    // }
   };
 
   const handleSubmit = (e) => {
@@ -65,7 +69,7 @@ function Home() {
               className="form-control"
               id="dateEnd"
               placeholder="Entrez date de fin"
-              min="2021-06-01T01:00"
+              min={state.dateEnd}
               max="2022-06-01T00:00"
               value={state.dateEnd}
               onChange={handleChange}
