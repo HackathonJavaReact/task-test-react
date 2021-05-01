@@ -1,11 +1,13 @@
 import api from "./api";
 import { getToken, removeToken, setToken } from "./token";
 
+const baseURL = "/api/authenticationService/";
+
 function login(username, password) {
   console.log(`service/authentication login ${username}`);
   console.log(`service/authentication login ${password}`);
   return api
-    .post("authenticate", {
+    .post(`${baseURL}authenticate`, {
       username: username,
       password: password,
     })
@@ -22,7 +24,7 @@ function logout() {
 
 function register(username, password) {
   return api
-    .post("register", {
+    .post(`${baseURL}register`, {
       username: username,
       password: password,
     })
@@ -39,7 +41,7 @@ function isUserLoggedIn() {
 
 function retrieve(username, password) {
   return api
-    .get("api/authenticated/me", {
+    .get(`${baseURL}isAuthenticated`, {
       username: username,
       password: password,
     })

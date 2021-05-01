@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { getToken, removeToken } from "./token";
 
-const REACT_APP_API_BASE_URL = ""; //TODO
+const REACT_APP_API_BASE_URL = "https://api-gateway-hackathon.herokuapp.com";
 
 console.log(`service/api: Base URL is: ${REACT_APP_API_BASE_URL}`);
 

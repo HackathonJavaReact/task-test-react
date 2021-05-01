@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useState } from "react";
 import { sendTask } from "../service/task";
 
 function Home() {
-  const [state, setState] = useEffect({
+  let now = new Date().toISOString();
+  console.log(now);
+
+  const [state, setState] = useState({
     taskName: "",
-    dateStart: new Date().toISOString(),
-    dateEnd: "2021-06-01",
+    dateStart: "2021-06-01T00:00",
+    dateEnd: "2021-06-01T01:00",
   });
 
   const handleChange = (e) => {
@@ -45,12 +48,12 @@ function Home() {
           <div className="form-group text-left">
             <label htmlFor="inputStart">Date de début</label>
             <input
-              type="date"
+              type="datetime-local"
               className="form-control"
               id="dateStart"
               placeholder="Entrez date de début"
-              min="2021-05-01"
-              max="2022-05-01"
+              min={state.dateStart}
+              max="2022-06-01T00:00"
               value={state.dateStart}
               onChange={handleChange}
             />
@@ -58,12 +61,12 @@ function Home() {
           <div className="form-group text-left">
             <label htmlFor="inputEnd">Date de fin</label>
             <input
-              type="date"
+              type="datetime-local"
               className="form-control"
               id="dateEnd"
               placeholder="Entrez date de fin"
-              min="2021-05-01"
-              max="2022-05-01"
+              min="2021-06-01T01:00"
+              max="2022-06-01T00:00"
               value={state.dateEnd}
               onChange={handleChange}
             />
