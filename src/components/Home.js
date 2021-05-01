@@ -4,8 +4,8 @@ import { sendTask } from "../service/task";
 function Home() {
   const [state, setState] = useEffect({
     taskName: "",
-    dateStart: 0,
-    dateEnd: 0,
+    dateStart: new Date().toISOString(),
+    dateEnd: "2021-06-01",
   });
 
   const handleChange = (e) => {
@@ -20,7 +20,7 @@ function Home() {
     e.preventDefault();
     const { taskName, dateStart, dateEnd } = state;
     sendTask(taskName, dateStart, dateEnd).then((data) => {
-      // do smth with data
+      // do smth with data received after sending form
     });
   };
 
@@ -49,6 +49,8 @@ function Home() {
               className="form-control"
               id="dateStart"
               placeholder="Entrez date de début"
+              min="2021-05-01"
+              max="2022-05-01"
               value={state.dateStart}
               onChange={handleChange}
             />
@@ -60,6 +62,8 @@ function Home() {
               className="form-control"
               id="dateEnd"
               placeholder="Entrez date de fin"
+              min="2021-05-01"
+              max="2022-05-01"
               value={state.dateEnd}
               onChange={handleChange}
             />
