@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { sendTask } from "../service/task";
+// import { sendTask } from "../service/task";
 
 function Home() {
-  let now = new Date().toISOString();
-  let oneHour = 3600000;
-  console.log(now);
+  const reReReFormatTime = (date) => date.toISOString().slice(0, 19);
+  const addOneHour = (date, toAdd = 3) =>
+    new Date(new Date(date).setHours(date.getHours() + toAdd));
+
+  const frDate = new Date();
+  const onHourLater = addOneHour(frDate, 1);
+
+  // expected output: locale time under following format : yyyy-MM-ddTHH:mm:ss
 
   const [state, setState] = useState({
     taskName: "",
-    dateStart: new Date().toISOString(),
-    dateEnd: "2021-06-01T01:00",
+    dateStart: reReReFormatTime(frDate),
+    dateEnd: reReReFormatTime(onHourLater),
   });
 
   const handleChange = (e) => {
@@ -18,17 +23,26 @@ function Home() {
       ...prevState,
       [id]: value,
     }));
-    // if(id === dateStart){
-    //   setState(dateEnd + 1)
-    // }
+
+    if (id === "dateStart") {
+      let res = reReReFormatTime(addOneHour(new Date(value)));
+      setState((prevState) => ({
+        ...prevState,
+        dateEnd: res,
+      }));
+      console.log(res);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const { taskName, dateStart, dateEnd } = state;
-    sendTask(taskName, dateStart, dateEnd).then((data) => {
-      // do smth with data received after sending form
-    });
+    // sendTask(taskName, dateStart, dateEnd).then((data) => {
+    //   // do smth with data received after sending form
+    // });
+    if (taskName === "") console.log("unknown");
+    console.log(dateStart);
+    console.log(dateEnd);
   };
 
   return (
