@@ -10,7 +10,6 @@ function sendTask(t, ds, de) {
       end: de,
     })
     .then((response) => {
-      console.log(response.data);
       return response.data;
     });
 }

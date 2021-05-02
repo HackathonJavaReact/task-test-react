@@ -45,16 +45,8 @@ function Home() {
     e.preventDefault();
     const { taskName, dateStart, dateEnd } = state;
 
-    if (taskName === "") console.log("unknown");
-    console.log(taskName);
-    console.log(dateStart);
-    console.log(dateEnd);
-
-    const newStart = JSON.stringify(removeT(dateStart));
-    const newEnd = JSON.stringify(removeT(dateEnd));
-
-    sendTask(taskName, newStart, newEnd).then((data) => {
-      console.log(data);
+    sendTask(taskName, removeT(dateStart), removeT(dateEnd)).then((data) => {
+      setTasks((prevState) => [...prevState, data]);
     });
   };
 
@@ -127,7 +119,8 @@ function Home() {
         {tasks.length ? (
           tasks.map((e, i) => (
             <li key={i}>
-              the task : {e.name} starts at {e.start} and ends at {e.end}
+              the task : <b>{e.name}</b> starts at <b>{e.start}</b> and ends at{" "}
+              <b>{e.end}</b>
             </li>
           ))
         ) : (
