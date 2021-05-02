@@ -50,7 +50,10 @@ function Home() {
     console.log(dateStart);
     console.log(dateEnd);
 
-    sendTask(taskName, removeT(dateStart), removeT(dateEnd)).then((data) => {
+    const newStart = JSON.stringify(removeT(dateStart));
+    const newEnd = JSON.stringify(removeT(dateEnd));
+
+    sendTask(taskName, newStart, newEnd).then((data) => {
       console.log(data);
     });
   };
