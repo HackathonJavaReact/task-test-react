@@ -14,9 +14,9 @@ function App() {
     setIsLoggedIn(false);
   };
 
-  // if (!isLoggedIn) {
-  //   return <Account setIsLoggedIn={setIsLoggedIn} />;
-  // }
+  if (!isLoggedIn) {
+    return <Account setIsLoggedIn={setIsLoggedIn} />;
+  }
 
   return (
     <div className="App">
