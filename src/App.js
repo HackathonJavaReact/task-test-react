@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 import Account from "./components/Account";
 import Home from "./components/Home";
@@ -14,9 +14,9 @@ function App() {
     setIsLoggedIn(false);
   };
 
-  if (!isLoggedIn) {
-    return <Account setIsLoggedIn={setIsLoggedIn} />;
-  }
+  // if (!isLoggedIn) {
+  //   return <Account setIsLoggedIn={setIsLoggedIn} />;
+  // }
 
   return (
     <div className="App">

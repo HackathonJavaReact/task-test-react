@@ -14,4 +14,10 @@ function sendTask(t, ds, de) {
     });
 }
 
-export { sendTask };
+function getTaskById(id) {
+  return api.get(`${baseURL}tasks/${id}`).then((response) => {
+    return response.data;
+  });
+}
+
+export { sendTask, getTaskById };
