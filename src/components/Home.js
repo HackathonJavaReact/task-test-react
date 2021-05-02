@@ -1,7 +1,10 @@
-import { useState } from "react";
-// import { sendTask } from "../service/task";
+import { useEffect, useState } from "react";
+import { sendTask } from "../service/task";
+import axios from "axios";
 
 function Home() {
+  const [tasks, setTasks] = useState([]);
+
   const reReReFormatTime = (date) => date.toISOString().slice(0, 19);
   const addOneHour = (date, toAdd = 3) =>
     new Date(new Date(date).setHours(date.getHours() + toAdd));
@@ -34,16 +37,33 @@ function Home() {
     }
   };
 
+  const removeT = (date) => {
+    return date.replace("T", " ");
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const { taskName, dateStart, dateEnd } = state;
-    // sendTask(taskName, dateStart, dateEnd).then((data) => {
-    //   // do smth with data received after sending form
-    // });
+
     if (taskName === "") console.log("unknown");
+    console.log(taskName);
     console.log(dateStart);
     console.log(dateEnd);
+
+    sendTask(taskName, removeT(dateStart), removeT(dateEnd)).then((data) => {
+      console.log(data);
+    });
   };
+
+  useEffect(() => {
+    const fetchTask = async () => {
+      const response = await axios(
+        "https://api-gateway-hackathon.herokuapp.com/api/taskService/tasks"
+      );
+      setTasks(response.data);
+    };
+    fetchTask();
+  }, []);
 
   return (
     <>
@@ -100,7 +120,17 @@ function Home() {
         </form>
       </div>
 
-      <p>List of Tasks comes here</p>
+      <ul>
+        {tasks.length ? (
+          tasks.map((e, i) => (
+            <li key={i}>
+              the task : {e.name} starts at {e.start} and ends at {e.end}
+            </li>
+          ))
+        ) : (
+          <p>No tasks</p>
+        )}
+      </ul>
     </>
   );
 }
