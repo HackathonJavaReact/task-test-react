@@ -4,7 +4,7 @@ const baseURL = "/api/taskService/";
 
 function sendTask(t, ds, de) {
   return api
-    .post(`${baseURL}tasks`, {
+    .post(`/api/compose/task`, {
       name: t,
       start: ds,
       end: de,
