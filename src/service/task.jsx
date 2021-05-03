@@ -1,10 +1,11 @@
 import api from "./api";
 
-const baseURL = "/api/taskService/";
+const taskURL = "/api/taskService/";
+const composeURL = "/api/compose/";
 
 function sendTask(t, ds, de) {
   return api
-    .post(`/api/compose/task`, {
+    .post(`${composeURL}task`, {
       name: t,
       start: ds,
       end: de,
@@ -14,10 +15,16 @@ function sendTask(t, ds, de) {
     });
 }
 
-function getTaskById(id) {
-  return api.get(`${baseURL}tasks/${id}`).then((response) => {
+function forgotPassword() {
+  return api.get(`${composeURL}users/tasks`).then((response) => {
     return response.data;
   });
 }
 
-export { sendTask, getTaskById };
+function getTaskById(id) {
+  return api.get(`${taskURL}tasks/${id}`).then((response) => {
+    return response.data;
+  });
+}
+
+export { sendTask, forgotPassword, getTaskById };
