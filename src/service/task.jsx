@@ -16,7 +16,7 @@ function sendTask(t, ds, de) {
 }
 
 function forgotPassword() {
-  return api.get(`${composeURL}users/tasks`).then((response) => {
+  return api.get(`${composeURL}user/tasks`).then((response) => {
     return response.data;
   });
 }
