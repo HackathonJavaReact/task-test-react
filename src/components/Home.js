@@ -5,7 +5,13 @@ import axios from "axios";
 import AllTask from "./AllTask";
 import TaskByUserId from "./TaskByUserId";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 
 function Home() {
   const [tasks, setTasks] = useState([]);
@@ -132,8 +138,12 @@ function Home() {
           <Route exact path="/task-test-react/">
             <AllTask tasks={tasks} />
           </Route>
-          <Route exact path="/task-test-react/mytasks">
-            <TaskByUserId />
+          <Route path="/task-test-react/mytasks">
+            {PerformanceNavigationTiming.type === "reload" ? (
+              <Redirect to="/task-test-react/" />
+            ) : (
+              <TaskByUserId />
+            )}
           </Route>
         </Switch>
       </Router>
