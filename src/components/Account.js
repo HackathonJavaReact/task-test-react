@@ -46,7 +46,7 @@ function Account({ setIsLoggedIn, setIsAuth }) {
       .catch((error) => {
         alert(`Sorry, there was an error`);
       });
-    console.log(e);
+    // console.log(e);
     isAuthenticated().then((response) => setIsAuth(response.data));
   };
 
@@ -61,8 +61,8 @@ function Account({ setIsLoggedIn, setIsAuth }) {
       .catch((error) => {
         alert(`Sorry, there was an error`);
       });
-    console.log(e);
-    console.log("isAuth : ", isAuthenticated().data);
+    // console.log(e);
+    // console.log("isAuth : ", isAuthenticated().data);
     isAuthenticated().then((response) => setIsAuth(response.data));
   };
 

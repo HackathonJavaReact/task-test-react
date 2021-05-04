@@ -35,7 +35,7 @@ function Home() {
         ...prevState,
         dateEnd: res,
       }));
-      console.log(res);
+      // console.log(res);
     }
   };
 

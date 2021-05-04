@@ -4,7 +4,7 @@ import { getToken, removeToken } from "./token";
 
 const REACT_APP_API_BASE_URL = "https://api-gateway-hackathon.herokuapp.com";
 
-console.log(`service/api: Base URL is: ${REACT_APP_API_BASE_URL}`);
+// console.log(`service/api: Base URL is: ${REACT_APP_API_BASE_URL}`);
 
 const defaultOptions = {
   baseURL: REACT_APP_API_BASE_URL,
@@ -19,17 +19,17 @@ const api = axios.create(defaultOptions);
 // Set the AUTH token for any request
 api.interceptors.request.use((config) => {
   const token = getToken();
-  console.log(`service/api: interceptor with token ${token}`);
+  console.log(`interceptors request with token ${token}`);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-  console.log(config);
+  // console.log(config);
   return config;
 });
 
 api.interceptors.response.use(
   (res) => {
-    console.log("res : ", res);
+    console.log("interceptors response : ", res);
     return res;
   },
   (err) => {

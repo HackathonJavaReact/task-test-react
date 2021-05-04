@@ -4,8 +4,8 @@ import { getToken, removeToken, setToken } from "./token";
 const baseURL = "/api/authenticationService/";
 
 function login(username, password) {
-  console.log(`service/authentication login ${username}`);
-  console.log(`service/authentication login ${password}`);
+  // console.log(`service/authentication login ${username}`);
+  // console.log(`service/authentication login ${password}`);
   return api
     .post(`${baseURL}authenticate`, {
       username: username,
@@ -40,10 +40,7 @@ function isUserLoggedIn() {
 }
 
 function isAuthenticated() {
-  return api.get(`${baseURL}isAuthenticated`).then((response) => {
-    console.log("isAuth response : ", response);
-    return response;
-  });
+  return api.get(`${baseURL}isAuthenticated`).then((response) => response);
 }
 
 export { login, logout, register, isUserLoggedIn, isAuthenticated };
