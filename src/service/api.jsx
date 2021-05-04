@@ -21,7 +21,7 @@ api.interceptors.request.use((config) => {
   const token = getToken();
   console.log(`service/api: interceptor with token ${token}`);
   if (token) {
-    config.headers.Authorization = `Bearer : ${token}`;
+    config.headers.Authorization = `Bearer ${token}`;
   }
   console.log(config);
   return config;

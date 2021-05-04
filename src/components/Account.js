@@ -1,9 +1,14 @@
 import { useState } from "react";
-import { register, login, isUserLoggedIn } from "../service/authentication";
+import {
+  register,
+  login,
+  isUserLoggedIn,
+  isAuthenticated,
+} from "../service/authentication";
 
 import Form from "./Form";
 
-function Account({ setIsLoggedIn }) {
+function Account({ setIsLoggedIn, setIsAuth }) {
   const [signinState, setSigninState] = useState({
     signinUsername: "",
     signinPassword: "",
@@ -42,6 +47,7 @@ function Account({ setIsLoggedIn }) {
         alert(`Sorry, there was an error`);
       });
     console.log(e);
+    isAuthenticated().then((response) => setIsAuth(response.data));
   };
 
   const handleSubmitLogin = (e) => {
@@ -56,6 +62,8 @@ function Account({ setIsLoggedIn }) {
         alert(`Sorry, there was an error`);
       });
     console.log(e);
+    console.log("isAuth : ", isAuthenticated().data);
+    isAuthenticated().then((response) => setIsAuth(response.data));
   };
 
   const signSpec = {

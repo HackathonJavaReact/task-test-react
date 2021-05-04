@@ -10,9 +10,14 @@ function sendTask(t, ds, de) {
       start: ds,
       end: de,
     })
-    .then((response) => {
-      return response.data;
-    });
+    .then(
+      (response) => {
+        return response.data;
+      },
+      (err) => {
+        if (err.response.status === 500) console.log(err);
+      }
+    );
 }
 
 function forgotPassword() {

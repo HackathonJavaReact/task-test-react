@@ -39,13 +39,11 @@ function isUserLoggedIn() {
   return !!getToken();
 }
 
-function retrieve(username, password) {
-  return api
-    .get(`${baseURL}isAuthenticated`, {
-      username: username,
-      password: password,
-    })
-    .then((response) => response.data);
+function isAuthenticated() {
+  return api.get(`${baseURL}isAuthenticated`).then((response) => {
+    console.log("isAuth response : ", response);
+    return response;
+  });
 }
 
-export { login, logout, register, isUserLoggedIn, retrieve };
+export { login, logout, register, isUserLoggedIn, isAuthenticated };
