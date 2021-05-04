@@ -121,18 +121,18 @@ function Home() {
       </div>
 
       <Router>
-        <Link to="/">
+        <Link to="/task-test-react/">
           <button className="btn btn-primary">Toutes les Tâches</button>
         </Link>
-        <Link to="/mytasks">
+        <Link to="/task-test-react/mytasks">
           <button className="btn btn-primary">Mes Tâches</button>
         </Link>
 
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/task-test-react/">
             <AllTask tasks={tasks} />
           </Route>
-          <Route path="/mytasks">
+          <Route path="/task-test-react/mytasks">
             <TaskByUserId />
           </Route>
         </Switch>

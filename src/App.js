@@ -23,6 +23,9 @@ function App() {
     isAuthenticated().then((response) => setIsAuth(response.data));
   });
 
+  console.log(process);
+  console.log(process.env);
+
   if (!isAuth) {
     return <Account setIsLoggedIn={setIsLoggedIn} setIsAuth={setIsAuth} />;
   }
