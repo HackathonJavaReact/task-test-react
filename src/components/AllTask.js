@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { getTaskById } from "../service/task";
-// import "jquery/dist/jquery.js";
-// import "bootstrap/dist/js/bootstrap.bundle.js";
+
+import "../styles/AllTask.css";
 
 function AllTask({ tasks }) {
   const [taskById, setTaskById] = useState({});
@@ -16,7 +16,7 @@ function AllTask({ tasks }) {
 
   return (
     <>
-      <ul>
+      <ul className="mt-3 pt-3 border-top border-2">
         {tasks.length ? (
           tasks.map((e, i) => (
             <li

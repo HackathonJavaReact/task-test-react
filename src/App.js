@@ -31,8 +31,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <button className="btn btn-primary" onClick={handleLogout}>
+    <div className="container-fluid pt-2">
+      <button className="btn btn-primary mr-2" onClick={handleLogout}>
         Log Out
       </button>
       <button className="btn btn-warning" onClick={handleRetrievePassword}>

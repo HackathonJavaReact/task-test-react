@@ -3,12 +3,8 @@ import { sendTask } from "../service/task";
 import axios from "axios";
 
 import AllTask from "./AllTask";
-import TaskByUserId from "./TaskByUserId";
 
 function Home() {
-  const [btn, setBtn] = useState(false);
-  const btns = ["Liste de tâches", "Mes tâches"];
-
   const [tasks, setTasks] = useState([]);
 
   const reReReFormatTime = (date) => date.toISOString().slice(0, 19);
@@ -121,20 +117,7 @@ function Home() {
         </form>
       </div>
 
-      <div className="container mt-1">
-        {btns.map((e, i) => (
-          <button
-            type="button"
-            className="btn btn-primary mr-1"
-            key={i}
-            onClick={() => setBtn(!btn)}
-          >
-            {e}
-          </button>
-        ))}
-
-        {!btn ? <AllTask tasks={tasks} /> : <TaskByUserId />}
-      </div>
+      <AllTask tasks={tasks} />
     </>
   );
 }
