@@ -132,7 +132,7 @@ function Home() {
           <Route exact path="/task-test-react/">
             <AllTask tasks={tasks} />
           </Route>
-          <Route path="/task-test-react/mytasks">
+          <Route exact path="/task-test-react/mytasks">
             <TaskByUserId />
           </Route>
         </Switch>
