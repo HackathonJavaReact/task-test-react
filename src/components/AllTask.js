@@ -9,14 +9,14 @@ function AllTask({ tasks }) {
 
   const handleClick = (id) => {
     getTaskById(id).then((response) => {
-      console.log("response ", response);
+      // console.log("response ", response);
       setTaskById(response);
     });
   };
 
   return (
     <>
-      <ul className="mt-3 pt-3 border-top border-2">
+      <ul className="">
         {tasks.length ? (
           tasks.map((e, i) => (
             <li

@@ -20,7 +20,7 @@ function sendTask(t, ds, de) {
     );
 }
 
-function forgotPassword() {
+function getMyTasks() {
   return api.get(`${composeURL}user/tasks`).then((response) => {
     return response.data;
   });
@@ -32,4 +32,4 @@ function getTaskById(id) {
   });
 }
 
-export { sendTask, forgotPassword, getTaskById };
+export { sendTask, getMyTasks, getTaskById };

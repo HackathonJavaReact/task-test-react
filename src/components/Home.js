@@ -3,6 +3,9 @@ import { sendTask } from "../service/task";
 import axios from "axios";
 
 import AllTask from "./AllTask";
+import TaskByUserId from "./TaskByUserId";
+
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function Home() {
   const [tasks, setTasks] = useState([]);
@@ -65,7 +68,7 @@ function Home() {
   return (
     <>
       <p>Home</p>
-      <div className="col-sm">
+      <div className="col-sm mb-3 pb-3 border-bottom border-2">
         <h3>Ajouter une tâche</h3>
         <form>
           <div className="form-group text-left">
@@ -117,7 +120,23 @@ function Home() {
         </form>
       </div>
 
-      <AllTask tasks={tasks} />
+      <Router>
+        <Link to="/">
+          <button className="btn btn-primary">Toutes les Tâches</button>
+        </Link>
+        <Link to="/mytasks">
+          <button className="btn btn-primary">Mes Tâches</button>
+        </Link>
+
+        <Switch>
+          <Route exact path="/">
+            <AllTask tasks={tasks} />
+          </Route>
+          <Route path="/mytasks">
+            <TaskByUserId />
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 }
